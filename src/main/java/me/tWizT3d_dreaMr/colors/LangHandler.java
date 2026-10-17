@@ -176,7 +176,7 @@ public class LangHandler {
 
     public static String replaceKey(String str, String with, String key) {
         key = ">" + key;
-        str = str.replaceAll(key, with);
+        str = str.replace(key, with);
         return str;
     }
 }

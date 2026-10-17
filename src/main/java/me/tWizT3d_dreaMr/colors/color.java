@@ -6,6 +6,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -171,8 +173,7 @@ public class color {
             }
             while (message.contains(Char + key)) {
                 String beg = message.substring(0, message.indexOf(Char + key));
-                message = message.substring(message.indexOf(Char + key));
-                message = message.replaceFirst(Char + key, "");
+                message = message.substring(message.indexOf(Char + key) + (Char + key).length());
                 String[] hxs = grads.get(key);
                 String[] hxs2 = new String[] {hxs[0], hxs[1]};
 
@@ -196,7 +197,10 @@ public class color {
             if (message.contains(Char + key)) {
                 if (isRandomColor(key)) {
                     while (message.contains(Char + key))
-                        message = message.replaceFirst(Char + key, "" + getColor(key));
+                        message =
+                                message.replaceFirst(
+                                        Pattern.quote(Char + key),
+                                        Matcher.quoteReplacement(getColor(key).toString()));
                 } else message = message.replace(Char + key, "" + getColor(key));
             }
         }

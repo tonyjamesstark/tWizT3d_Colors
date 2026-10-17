@@ -46,4 +46,21 @@ public class colorTest {
         color.addColor("j", "ff00ff");
         assertEquals("#ff00ff", color.getColorString("j"));
     }
+
+    @Test
+    void colorfyTreatsRandomCodeWithRegexCharsLiterally() {
+        color.addColor("(", "random");
+        String out = color.ColorfyString("a &( b", null, "chat", "&");
+        assertFalse(out.contains("&("), out);
+        assertTrue(out.startsWith("a \u00a7x"), out);
+        assertTrue(out.endsWith(" b"), out);
+    }
+
+    @Test
+    void colorfyTreatsGradientCodeWithRegexCharsLiterally() {
+        color.addGrad("+", "ff0000 0000ff");
+        String out = color.ColorfyString("&+hi", null, "chat", "&");
+        assertFalse(out.contains("&+"), out);
+        assertTrue(out.endsWith("i"), out);
+    }
 }
