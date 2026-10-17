@@ -1,2 +1,2 @@
 mvn install
-mv ./target/tWizT3dColors.jar ~/Desktop/TestServer/plugins/tWizT3dColors.jar
+mv ./target/tWizT3dColors-*.jar ~/Desktop/TestServer/plugins/

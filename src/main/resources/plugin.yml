@@ -1,24 +1,21 @@
 name: tWizT3dColors
 author: tWizT3d_dreaMr
-version: 1.4.6.09
+version: ${project.version}
 main: me.tWizT3d_dreaMr.colors.main
-api-version: 1.16
+api-version: '26.2'
 commands:
    colorme:
-      description: Sets your color code
-      usage: colorme <code> <hex>
+      description: Create a custom chat colour code from a hex value
+      usage: '<command> <code> <hex>  e.g. /colorme sunset ff6600'
    setcolor:
-      description: change your chat color
-      usage: setcolor <colorcode>
-   color:
-      description: Sets your color list
-      usage: setcolor <server> list
+      description: Change or view your chat colour
+      usage: '<command> [help|chat|set <code|&#hex>|setg <gradient>|remove]'
    colors:
-      description: list of colors
-      usage: colors
+      description: List the available colour codes
+      usage: <command>
    grad:
-      description: sets gradient
-      usage: grad <start line> <End line> [hex 2x]
+      description: Apply a colour gradient to your held item's lore
+      usage: '<command> <hex1> <hex2> [hex3] <start line> <end line>  e.g. /grad #ff0000 #0000ff 1 3'
 permissions:
     Colorme.set.self:
         description: allows the user to change thier own settings
@@ -35,4 +32,28 @@ permissions:
     Colorme.h.Anvil:
         description: allows the user to change server settings
         default: op
-softdepend: [PlaceholderAPI, VentureChat]
+    Colorme.Grad:
+        description: allows the user to apply a gradient to item lore
+        default: op
+    Colorme.Create:
+        description: allows the user to create a custom color code
+        default: op
+    Colorme.H:
+        description: allows the user to color an anvil's renamed item
+        default: op
+    colorcommand.custom:
+        description: allows the user to see the custom colors in /colors
+        default: op
+    tc2.can:
+        description: allows the user to open the chat color menu
+        default: op
+    tco.woo:
+        description: allows the user to set the restricted chat colors
+        default: op
+    tc.Chat.Defaults:
+        description: allows formatting codes in chat for players without coreprotect.inspect
+        default: op
+    tcolors.admin:
+        description: shows locked colours in the chat colour GUI and allows applying them
+        default: op
+softdepend: [LuckPerms, PermissionsEx, PlaceholderAPI, VentureChat]
